@@ -3,6 +3,8 @@ const validator = require("validator");
 
 const UserSchema = new mongoose.Schema(
   {
+    // ? est ce qu'on met une image de profil? Sulayman
+
     name: {
       type: String,
       required: [true, "You have to provide a name"],
