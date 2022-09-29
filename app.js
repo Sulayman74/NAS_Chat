@@ -7,13 +7,18 @@ const connectDB = require("./DB/connectDB");
 
 app.use(express.json());
 
-app.get("api/v1/chatApp", (req, res) => {
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+
+app.use("/api/v1/chatApp", (req, res) => {
   res.status(200).json({
-    msg: "hello",
+    status: "success",
+    msg: "KRIMO",
   });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const startServer = async () => {
   try {
     await connectDB(process.env.DATABASE_URI);

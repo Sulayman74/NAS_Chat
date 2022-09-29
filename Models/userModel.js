@@ -3,8 +3,6 @@ const validator = require("validator");
 
 const UserSchema = new mongoose.Schema(
   {
-    // ? est ce qu'on met une image de profil? Sulayman
-
     name: {
       type: String,
       required: [true, "You have to provide a name"],
@@ -27,6 +25,15 @@ const UserSchema = new mongoose.Schema(
       minlength: 5,
       maxlength: 10,
     },
+    photo: {
+      type: String,
+      default: 'defaultUser.jpg'
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user'
+    },
     password: {
       type: String,
       required: [true, "You have to provide a password"],
@@ -42,15 +49,16 @@ const UserSchema = new mongoose.Schema(
         message: "Passwords does not match",
       },
     },
-    //   createdAt: {
-    //     type: Date,
-    //     default: Date.now(),
-    //   },
-    groups: {
-      type: mongoose.Schema.ObjectId,
-      ref: "groupModel",
-      required: true,
+      groups: {
+        type: mongoose.Schema.ObjectId,
+        ref: "groupModel",
+        required: true,
+      },
+      active: {
+        type: Boolean,
+        default: true,
+        select: false
+      },
     },
-  },
   { timestamps: true }
 );
