@@ -16,3 +16,5 @@ const GroupSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Group", GroupSchema);
