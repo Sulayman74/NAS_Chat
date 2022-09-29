@@ -27,12 +27,12 @@ const UserSchema = new mongoose.Schema(
     },
     photo: {
       type: String,
-      default: 'defaultUser.jpg'
+      default: "defaultUser.jpg",
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
-      default: 'user'
+      enum: ["user", "admin"],
+      default: "user",
     },
     password: {
       type: String,
@@ -49,16 +49,17 @@ const UserSchema = new mongoose.Schema(
         message: "Passwords does not match",
       },
     },
-      groups: {
-        type: mongoose.Schema.ObjectId,
-        ref: "groupModel",
-        required: true,
-      },
-      active: {
-        type: Boolean,
-        default: true,
-        select: false
-      },
+    groups: {
+      type: mongoose.Schema.ObjectId,
+      ref: "groupModel",
     },
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
+    },
+  },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("User", UserSchema);

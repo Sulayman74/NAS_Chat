@@ -1,7 +1,10 @@
 require("dotenv").config();
+require('express-async-errors');
 
 const express = require("express");
 const app = express();
+
+const userRouter = require("./routes/userRoute");
 
 const connectDB = require("./DB/connectDB");
 
@@ -11,12 +14,7 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-app.use("/api/v1/chatApp", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    msg: "KRIMO",
-  });
-});
+app.use("/api/v1/chatApp/users", userRouter)
 
 const port = process.env.PORT || 3001;
 const startServer = async () => {
