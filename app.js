@@ -4,9 +4,12 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 
-const userRouter = require("./routes/userRoute");
 
-const groupRouter = require("./routes/groupRoute");
+
+const userRouter = require("./routes/userRoute");
+const groupRouter = require("./routes/roomRoute");
+
+
 
 const connectDB = require("./DB/connectDB");
 
@@ -16,9 +19,13 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-app.use("/api/v1/chatApp/users", userRouter);
 
-app.use("/api/v1/chatApp/groups", groupRouter);
+
+app.use("/api/v1/chatApp/users", userRouter);
+app.use("/api/v1/chatApp/rooms", roompRouter);
+
+
+
 
 const port = process.env.PORT || 3001;
 const startServer = async () => {
