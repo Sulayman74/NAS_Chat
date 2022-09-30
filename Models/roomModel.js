@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const RoomSchema = new mongoose.Schema(
   {
-    groupName: {
+    name: {
       type: String,
       required: [true, "You have to provide a group name"],
       minlength: 5,

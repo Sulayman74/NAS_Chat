@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -48,8 +49,9 @@ const UserSchema = new mongoose.Schema(
         },
         message: "Passwords does not match",
       },
+      select: false,
     },
-    groups: {
+    rooms: {
       type: mongoose.Schema.ObjectId,
       ref: "groupModel",
     },
@@ -61,5 +63,15 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+UserSchema.pre("save", async function () {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+UserSchema.methods.comparePassword = async function (candidate) {
+  const isMatch = await bcrypt.compare(candidate, this.password);
+  return isMatch;
+};
 
 module.exports = mongoose.model("User", UserSchema);
