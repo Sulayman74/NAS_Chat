@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 
 const userRouter = require("./routes/userRoute");
+const messageRouter = require("./routes/messageRoute");
 
 const connectDB = require("./DB/connectDB");
 
@@ -14,7 +15,8 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-app.use("/api/v1/chatApp/users", userRouter)
+app.use("/api/v1/chatApp/users", userRouter);
+app.use("/api/v1/chatApp/messages", messageRouter);
 
 const port = process.env.PORT || 3001;
 const startServer = async () => {

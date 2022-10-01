@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 
-const UserSchema = new Mongoose.Schema({
+const MessageSchema = new mongoose.Schema({
     
     messageID: {
         type: Number,
-        required: true
+        // required: true
     },
     text: {
         type: String,
@@ -15,20 +15,22 @@ const UserSchema = new Mongoose.Schema({
         delivered : Boolean,
         read : Boolean
       },
-      datetime: {
-        type: Date,
-        default: Date.now(),
-      },
+      // datetime: {
+      //   type: Date,
+      //   default: Date.now(),
+      // },
       users: {
         type: mongoose.Schema.ObjectId,
         ref: "useModel",
-        required: true,
+        // required: true,
       },
-      sender: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User',
-        required: true
-      },
+      // sender: { 
+      //   type: mongoose.Schema.Types.ObjectId, 
+      //   ref: 'User',
+      //   required: true
+      // },
 },
 { timestamps: true }
 )
+
+module.exports = mongoose.model("Message", MessageSchema);
