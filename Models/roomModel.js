@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const GroupSchema = new mongoose.Schema(
+const RoomSchema = new mongoose.Schema(
   {
-    groupName: {
+    name: {
       type: String,
       required: [true, "You have to provide a group name"],
       minlength: 5,
@@ -16,3 +16,5 @@ const GroupSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Room", RoomSchema);
