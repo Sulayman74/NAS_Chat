@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 
 const userRouter = require("./routes/userRoute");
+const messageRouter = require("./routes/messageRoute");
 const roomRouter = require("./routes/roomRoute");
 const authRouter = require("./routes/authRoute");
 
@@ -22,9 +23,11 @@ app.get("/", (req, res) => {
 app.use("/api/v1/chatApp/users", userRouter);
 app.use("/api/v1/chatApp/rooms", roomRouter);
 app.use("/api/v1/chatApp/auth", authRouter);
+app.use("/api/v1/chatApp/messages", messageRouter);
 
 app.use(notFound);
 app.use(errorHandler);
+
 
 const port = process.env.PORT || 3001;
 const startServer = async () => {
