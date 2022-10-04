@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
-const CustomError = require("./customError");
+const CustomAPIError = require("./custom-api-error");
 
-class BadRequestError extends CustomError {
+class BadRequestError extends CustomAPIError {
   constructor(message) {
     super(message);
     this.statusCode = StatusCodes.BAD_REQUEST;

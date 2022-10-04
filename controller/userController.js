@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const User = require("../Models/userModel");
+const User = require("../models/userModel");
 
 exports.getAllUsers = async (req, res) => {
   const allUsers = await User.find();
@@ -9,14 +9,6 @@ exports.getAllUsers = async (req, res) => {
     allUsers,
   });
 };
-
-// exports.createNewUser = async (req, res) => {
-//   const newUser = await User.create(req.body);
-//   res.status(StatusCodes.CREATED).json({
-//     status: "success",
-//     data: newUser,
-//   });
-// };
 
 exports.getSingleUser = async (req, res) => {
   const { id } = req.params;

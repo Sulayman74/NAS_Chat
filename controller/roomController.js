@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const Room = require("../Models/roomModel");
+const Room = require("../models/roomModel");
 
 // Get all Rooms
 exports.getAllRooms = async (req, res) => {

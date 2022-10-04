@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../Models/userModel");
+const User = require("../models/userModel");
 const { StatusCodes } = require("http-status-codes");
 
 exports.register = async (req, res) => {

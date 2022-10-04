@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
-const CustomError = require("./custom-api");
+const CustomAPIError = require("./custom-api");
 
-class NotFoundError extends CustomError {
+class NotFoundError extends CustomAPIError {
   constructor(message) {
     super(message);
     this.statusCode = StatusCodes.NOT_FOUND;
