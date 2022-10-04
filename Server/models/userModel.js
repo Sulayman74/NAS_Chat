@@ -51,10 +51,12 @@ const UserSchema = new mongoose.Schema(
       },
       select: false,
     },
-    rooms: {
-      type: mongoose.Schema.ObjectId,
-      ref: "groupModel",
-    },
+    rooms: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "groupModel",
+      },
+    ],
     active: {
       type: Boolean,
       default: true,

@@ -6,7 +6,7 @@ exports.getAllRooms = async (req, res) => {
   const allRooms = await Room.find();
   res.status(StatusCodes.OK).json({
     status: "success",
-    results: newRoom.length,
+    results: allRooms.length,
     allRooms,
   });
 };

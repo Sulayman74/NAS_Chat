@@ -10,7 +10,7 @@ router
 router
   .route("/:id")
   .get(messageController.getSingleMessage)
-  // .patch(messageController.updateMessage)
+  .patch(messageController.updateMessage)
   .delete(messageController.deleteMessage);
 
 module.exports = router;

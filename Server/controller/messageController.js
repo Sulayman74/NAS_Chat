@@ -27,12 +27,12 @@ exports.getSingleMessage = async (req, res) => {
   });
 };
 
-// exports.updateMessage = async (req, res) => {
-//   res.status(StatusCodes.OK).json({
-//     status: "success",
-//     msg: "Update user",
-//   });
-// };
+exports.updateMessage = async (req, res) => {
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    msg: "message updated",
+  });
+};
 
 exports.deleteMessage = async (req, res) => {
   const { id } = req.params;
