@@ -4,13 +4,13 @@ const messageController = require("../controller/messageController");
 
 router
   .route("/")
-//   .get(messageController.getAllMessages)
+  .get(messageController.getAllMessages)
   .post(messageController.createNewMessage);
 
 router
   .route("/:id")
-//   .get(messageController.getSingleUser)
-//   .patch(messageController.updateUser)
-//   .delete(messageController.deleteUser);
+  .get(messageController.getSingleMessage)
+  // .patch(messageController.updateMessage)
+  .delete(messageController.deleteMessage);
 
 module.exports = router;
