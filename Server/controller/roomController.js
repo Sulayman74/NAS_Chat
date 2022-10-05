@@ -14,6 +14,9 @@ exports.getAllRooms = async (req, res) => {
 //  Create new Room
 
 exports.createNewRoom = async (req, res) => {
+  // Check if inupt name & users
+  // check if users match existings users
+  // check if name already exists
   const newRoom = await Room.create(req.body);
   res.status(StatusCodes.CREATED).json({
     status: "success",
@@ -25,6 +28,7 @@ exports.createNewRoom = async (req, res) => {
 
 exports.GetSingleRoom = async (req, res) => {
   const { id } = req.params;
+  // check if room exists
   const room = await Room.findById(id);
   res.status(StatusCodes.OK).json({
     status: "success",
@@ -35,6 +39,9 @@ exports.GetSingleRoom = async (req, res) => {
 // Update Room
 
 exports.updateRoom = async (req, res) => {
+  // Check if inupt name & users
+  // check if users match existings users
+  // check if name already exists
   res.status(StatusCodes.OK).json({
     status: "success",
     msg: "Room user",
@@ -45,6 +52,7 @@ exports.updateRoom = async (req, res) => {
 
 exports.deleteRoom = async (req, res) => {
   const { id } = req.params;
+  // Check if inupt name & users
   await Room.findByIdAndDelete(id);
   res.status(StatusCodes.NO_CONTENT).json({
     msg: null,

@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 
 const MessageSchema = new mongoose.Schema({
-    
-    messageID: {
-        type: Number,
-        // required: true
-    },
     text: {
         type: String,
         required: true,
@@ -22,6 +17,7 @@ const MessageSchema = new mongoose.Schema({
       users: {
         type: mongoose.Schema.ObjectId,
         ref: "useModel",
+        // by default users into current room
         // required: true,
       },
       // sender: { 

@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
 const { StatusCodes } = require("http-status-codes");
+const CustomError = require("../errors/index");
 
 exports.register = async (req, res) => {
   const { email, name, password, confirmPassword, pseudo } = req.body;
   const emailAlreadyExists = await User.findOne({ email });
   if (emailAlreadyExists) {
-    throw new Error("Sorry this email already exists");
+    throw new CustomError.BadRequestError("Sorry this email already exists");
   }
   const user = await User.create({
     email,
@@ -16,7 +17,7 @@ exports.register = async (req, res) => {
     pseudo,
   });
   if (!user) {
-    throw new Error("Oops.. Someting went wrong try again later");
+    throw new CustomError.BadRequestError("Oops.. Someting went wrong try again later");
   }
   res.status(StatusCodes.CREATED).json({
     status: "success",
@@ -43,5 +44,3 @@ exports.login = async (req, res) => {
     msg: "Ok you are logged in",
   });
 };
-
-
